@@ -9,7 +9,6 @@ import {
 import db from "../config";
 import firebase from "firebase";
 import { Header, Icon, Card } from "react-native-elements";
-import { timing } from "react-native-reanimated";
 
 export default class ExchangerDetails extends React.Component {
   constructor(props) {
@@ -23,7 +22,7 @@ export default class ExchangerDetails extends React.Component {
       receiverRequestDocId: "",
       receiverId: this.props.navigation.getParam("details")["user_id"],
       requestId: this.props.navigation.getParam("details")["request_id"],
-      itemName: this.props.navigation.getParam("details")["item_name"],
+      itemName: this.props.navigation.getParam("details")["items_name"],
       itemDescription: this.props.navigation.getParam("details")[
         "items_description"
       ],
@@ -70,11 +69,13 @@ export default class ExchangerDetails extends React.Component {
   }
 
   updateItemStatus = () => {
-    db.collection("requested_items").add({
+    db.collection("all_donations").add({
       items_description: this.state.itemDescription,
       items_name: this.state.itemName,
       request_id: this.state.requestId,
-      user_id: this.state.userId,
+      donor_id: this.state.userId,
+      requested_by: this.state.receiverName,
+      request_status: 'Donor Interested'
     });
   };
   componentDidMount() {
