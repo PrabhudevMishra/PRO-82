@@ -31,6 +31,8 @@ export default class SettingScreen extends React.Component {
       address: this.state.address,
       mobile_number: this.state.mobile,
     });
+    Alert.alert("Profile updated sucessfully.");
+
   };
 
   getUserDetails = async () => {
@@ -113,6 +115,7 @@ export default class SettingScreen extends React.Component {
             style={styles.registerButton}
             onPress={() => {
               this.updateUserDetails();
+
             }}
           >
             <Text style={styles.registerButtonText}>Save</Text>
