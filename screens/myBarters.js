@@ -11,7 +11,7 @@ import firebase from "firebase";
 import MyHeader from "../components/myHeader";
 import { ListItem, Icon } from "react-native-elements";
 
-export default class MyDonationScreen extends React.Component {
+export default class MyBarters extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -51,7 +51,7 @@ export default class MyDonationScreen extends React.Component {
     return (
       <ListItem
         key={i}
-        title={item.item_name}
+        title={item.items_name}
         subtitle={
           "Requested by: " +
           item.requested_by +
@@ -67,11 +67,11 @@ export default class MyDonationScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <MyHeader title="My Donations" navigation={this.props.navigation} />
+        <MyHeader title="My Barters" navigation={this.props.navigation} />
         <View style={{ flex: 1 }}>
           {this.state.allDonations.length === 0 ? (
             <View style={styles.subContainer}>
-              <Text style={{ fontSize: 20 }}>List of all book donations</Text>
+              <Text style={{ fontSize: 20 }}>List of all barters</Text>
             </View>
           ) : (
             <FlatList
@@ -103,3 +103,4 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
   },
 });
+
